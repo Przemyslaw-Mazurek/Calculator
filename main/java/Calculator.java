@@ -115,20 +115,20 @@ public class Calculator extends JFrame implements ActionListener {
         }
 
         for (int i = 0; i < numberButtons.length; i++) {
-            if (numberButtons[i].getText().equals(buttonValue)){
+            if (numberButtons[i].getText().equals(buttonValue)) {
                 number = number.concat(buttonValue);
                 displayField.setText(number);
             }
         }
 
-        if (buttonValue.equals(".")){
+        if (buttonValue.equals(".")) {
             number = number.concat(buttonValue);
-            displayField.setText(number );
+            displayField.setText(number);
         }
 
 
         for (int i = 0; i < operatorButtons.length; i++) {
-            if (operatorButtons[i].getText().equals(buttonValue)){
+            if (operatorButtons[i].getText().equals(buttonValue)) {
                 displayField.setText(buttonValue);
                 operator = buttonValue;
                 firstNumber = Double.parseDouble(number);
@@ -136,9 +136,9 @@ public class Calculator extends JFrame implements ActionListener {
             }
         }
 
-        if (buttonValue.equals("=")){
+        if (buttonValue.equals("=")) {
 
-            switch (operator){
+            switch (operator) {
                 case "+":
                     result = firstNumber + Double.parseDouble(displayField.getText());
                     break;
@@ -152,18 +152,16 @@ public class Calculator extends JFrame implements ActionListener {
                     result = firstNumber / Double.parseDouble(displayField.getText());
             }
 
-            if (result % 1 ==0){                          //if the result has no decimal part
+            if (result % 1 == 0) {                          //if the result has no decimal part
                 int intResult = (int) result;
                 displayField.setText("" + intResult);
                 number = "";
                 firstNumber = 0;
-            }else {
+            } else {
                 displayField.setText("" + result);
                 number = "";
                 firstNumber = 0;
             }
-
-
 
 
         }
@@ -207,16 +205,5 @@ public class Calculator extends JFrame implements ActionListener {
         operatorButtons[3].setFont(font);
     }
 
-    public static boolean isNumber(String number) {
-        boolean isNumber = true;
-
-        try {
-            Double.parseDouble(number);
-        } catch (NumberFormatException e) {
-            isNumber = false;
-        }
-
-        return isNumber;
-    }
 
 }
